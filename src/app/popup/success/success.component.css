@@ -1,0 +1,89 @@
+.success-card {
+  /* background: #fff; */
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.icon-wrapper {
+  width: 96px; height: 96px;
+  margin: 0 auto 16px;
+  background: radial-gradient(circle at center, #e8f5e9 0%, #c8e6c9 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkmark {
+  width: 56px; height: 56px;
+  stroke: #4caf50;
+  stroke-width: 4;
+  stroke-miterlimit: 10;
+  animation: popIn 0.4s ease-out both;
+}
+
+@keyframes popIn {
+  0%   { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  animation: draw 0.6s cubic-bezier(0.65,0,0.45,1) forwards;
+}
+
+.checkmark__check {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: draw 0.3s cubic-bezier(0.65,0,0.45,1) 0.6s forwards;
+}
+
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+
+.success-title {
+  margin: 8px 0;
+  font-size: 1.75rem;
+  color: #2e7d32;
+}
+
+.success-message {
+  font-size: 1rem;
+  color: #4caf50;
+  margin-bottom: 16px;
+}
+
+.id-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.patient-id {
+  font-family: monospace;
+  font-size: 0.95rem;
+  /* color: #616161; */
+  /* background: #f5f5f5; */
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.copy-btn {
+  width: 32px; height: 32px;
+  min-width: 0;
+  box-shadow: none;
+  transition: transform 0.2s;
+}
+
+.copy-btn:hover {
+  transform: scale(1.1);
+}
+
+.copy-btn mat-icon {
+  font-size: 18px;
+}

@@ -1,0 +1,121 @@
+<div mat-dialog-content class="success-content">
+    <h2>
+        Add: '{{ patientdata.name }}' to CheckUp Queue |
+        <i>{{ patientdata._id }}</i>
+    </h2>
+
+
+    <div class="registration-form-container">
+        <form class="registration-form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <div class="form-row row">
+                <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Enter Name" formControlName="name" required />
+                    <mat-error *ngIf="myForm.get('name')?.invalid">{{
+                        getErrorMessage("name")
+                        }}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Date of Birth</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="dob" required />
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="myForm.get('dob')?.invalid">{{
+                        getErrorMessage("dob")
+                        }}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Gender</mat-label>
+                    <mat-select formControlName="gender" required>
+                        <mat-option value="Male">Male</mat-option>
+                        <mat-option value="Female">Female</mat-option>
+                        <mat-option value="other">Other</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="myForm.get('gender')?.invalid">Required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Care Of</mat-label>
+                    <input matInput placeholder="Enter Care Of" formControlName="careOf" />
+                    <mat-error *ngIf="myForm.get('careOf')?.invalid">{{
+                        getErrorMessage("careOf")
+                        }}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Address</mat-label>
+                    <textarea matInput rows="4" formControlName="address"></textarea>
+                </mat-form-field>
+            </div>
+
+            <div class="form-row">
+                <mat-form-field appearance="outline">
+                    <mat-label>Mobile Number</mat-label>
+                    <input matInput type="tel" formControlName="mobileNumber" required />
+                    <mat-error *ngIf="myForm.get('mobileNumber')?.invalid">{{
+                        getErrorMessage("mobileNumber")
+                        }}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" formControlName="email" />
+                    <mat-error *ngIf="myForm.get('email')?.invalid">{{
+                        getErrorMessage("email")
+                        }}</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="form-row">
+                <mat-form-field appearance="outline">
+                    <mat-label>Weight</mat-label>
+                    <input matInput type="number" formControlName="weight" />
+                    <span matSuffix> kg</span>
+                    <mat-error *ngIf="myForm.get('weight')?.invalid">{{
+                        getErrorMessage("weight")
+                        }}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Height</mat-label>
+                    <input matInput type="number" formControlName="height" />
+                    <span matSuffix>cm</span>
+                    <mat-error *ngIf="myForm.get('height')?.invalid">{{
+                        getErrorMessage("height")
+                        }}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Blood Sugar</mat-label>
+                    <input matInput type="number" formControlName="bloodSugar" />
+                    <span matSuffix>mg/dL</span>
+                    <mat-error *ngIf="myForm.get('bloodSugar')?.invalid">{{
+                        getErrorMessage("bloodSugar")
+                        }}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Blood Pressure</mat-label>
+                    <input matInput type="text" formControlName="bloodPressure" />
+                    <span matSuffix>mmHg</span>
+                </mat-form-field>
+            </div>
+
+            <div class="button-submitDiv">
+                <button mat-raised-button type="submit" class="button-submit" [disabled]="myForm.invalid">
+                    <mat-progress-spinner *ngIf="isLoading" diameter="16" mode="indeterminate" color="accent"
+                        strokeWidth="10" style="display: inline-block; vertical-align: middle;">
+                    </mat-progress-spinner>
+                    Add to Checkup Queue
+                </button>
+
+                <button mat-raised-button type="button" class="button-submit" (click)="onNoClick()"
+                    style="margin-left: 25px">
+                    Close Dialog
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

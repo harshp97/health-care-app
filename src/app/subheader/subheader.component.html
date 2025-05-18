@@ -1,0 +1,16 @@
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" color="primary" class="subheader">
+  <mat-tab label="New Registration">
+    <app-new-registration></app-new-registration>
+  </mat-tab>
+
+  <mat-tab label="View all Registrations" *ngIf="!isHidden">
+    <app-data-table></app-data-table>
+  </mat-tab>
+
+  <mat-tab label="Search Patient">
+    <app-search-patient></app-search-patient>
+  </mat-tab>
+  <mat-tab label="Edit Patient">
+    <app-edit-patient></app-edit-patient>
+  </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,162 @@
+/* Container styling */
+.registration-form-container {
+  padding: 20px;
+  margin: 12px;
+  background-color: var(--bg-color);
+  box-shadow:
+    0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+}
+
+/* Form layout */
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Form row: flex container */
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* Children of form row */
+.form-row > * {
+  flex: 1 1 300px;
+  min-width: 250px;
+}
+
+/* Full width for textareas */
+.full-width {
+  width: 100%;
+}
+
+/* Submit button container */
+.button-submitDiv {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* Table container */
+.example-container {
+  margin: 12px;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+/* Patient ID & Name styling */
+.patient-id {
+  font-size: 1rem;
+  font-family: monospace;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #555;
+}
+
+.patient-name {
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+/* Table rows hover effect */
+.mat-mdc-row .mat-mdc-cell {
+  cursor: pointer;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: currentColor;
+  border-bottom: 3px solid;
+  border-top: 3px solid;
+}
+
+/* Make mat-table fully responsive */
+.full-width-table {
+  width: 100%;
+  table-layout: auto;
+}
+
+.mat-row .mat-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+/* Universal box-sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* MEDIA QUERY: Mobile responsiveness */
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+  }
+
+  .registration-form-container {
+    padding: 12px;
+  }
+
+  .button-submitDiv {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .example-container {
+    padding: 8px;
+    margin: 8px;
+  }
+
+  .patient-name {
+    font-size: 1.1rem;
+  }
+
+  .patient-id {
+    font-size: 0.9rem;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  th, td {
+    white-space: nowrap;
+  }
+
+  p {
+    font-size: 0.9em; /* FIXED: was 9em, now reasonable */
+  }
+}
+
+
+/* Always constrain table width, allow horizontal scroll */
+.table-responsive-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Ensure table doesn't overflow */
+.table-responsive-wrapper table {
+  min-width: 1000px; /* or adjust based on expected column width */
+  width: 100%;
+  border-collapse: collapse;
+}
+
+
+
+.disabled-row {
+  background-color: #e0e0e0; /* light gray or any color */
+  pointer-events: none;      /* disables click */
+  opacity: 0.7;              /* optional visual cue */
+}
+
+.no-click {
+  cursor: not-allowed;
+}

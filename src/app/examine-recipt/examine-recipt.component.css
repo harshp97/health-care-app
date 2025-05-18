@@ -1,0 +1,86 @@
+.success-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #4CAF50; /* Success green */
+}
+
+.success-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 20px;
+}
+
+.registration-form-container {
+    padding: 20px;
+    margin: 12px;
+    background-color: var(--bg-color, #fff); /* Fallback to white if not defined */
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+                0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+    transition: background-color 0.3s;
+    border-radius: 8px;
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.form-row > * {
+    flex: 1 1 300px;
+    min-width: 280px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.button-submitDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+i {
+    font-style: italic;
+    font-size: 0.93em;
+    color: #777;
+}
+
+/* Make sure long forms are scrollable in dialogs */
+.mat-mdc-dialog-content {
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* Add some spacing below form fields */
+mat-form-field {
+    margin-bottom: 8px;
+}
+
+/* Responsive tweaks for mobile */
+@media (max-width: 600px) {
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-row > * {
+        min-width: 100% !important;
+    }
+
+    .button-submitDiv {
+        flex-direction: column;
+        gap: 12px;
+    }
+}

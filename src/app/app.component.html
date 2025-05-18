@@ -1,0 +1,50 @@
+<div *ngIf="!isLoggedIn">
+
+  <div class="login-wrapper mat-elevation-z8">
+    <div class="login-card">
+      <div class="login-header">
+        <h2>Welcome Back</h2>
+        <p>Please sign in to your account</p>
+      </div>
+
+      <form class="login-form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="full-width" floatLabel="always">
+          <mat-label>User Name</mat-label>
+          <input matInput placeholder="Enter Username" formControlName="username" required>
+          <mat-error *ngIf="myForm.get('username')?.invalid">User Name is Required.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width" floatLabel="always">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hidePassword ? 'password' : 'text'" placeholder="Enter Password"
+            formControlName="password" required>
+          <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="myForm.get('password')?.invalid">Password is Required.</mat-error>
+        </mat-form-field>
+
+
+        <button mat-raised-button color="primary" type="submit" class="login-button"
+          [disabled]="myForm.invalid || isLoading">
+
+          <mat-progress-spinner *ngIf="isLoading" diameter="20" mode="indeterminate" color="accent" strokeWidth="5">
+          </mat-progress-spinner>
+
+          <span *ngIf="!isLoading">Login</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+
+<div *ngIf="isLoggedIn" class="app-container">
+  <app-header (themeToggled)="onThemeToggled()"></app-header> <!-- Listen for themeToggled -->
+  <div class="main-content">
+    <app-subheader></app-subheader>
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer></app-footer>
+</div>

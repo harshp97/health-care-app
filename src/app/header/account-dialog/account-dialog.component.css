@@ -1,0 +1,33 @@
+.dialog-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  
+}
+
+.dialog-content {
+  font-size: 16px;
+  color: #444;
+  padding-bottom: 16px;
+}
+
+mat-list-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.value {
+  margin-left: 8px;
+  font-weight: normal;
+  
+}
+
+.dialog-actions {
+  margin-top: 16px;
+}
+
+
+.mdc-list-item__primary-text{
+  color: aqua;
+}

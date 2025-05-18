@@ -1,0 +1,55 @@
+/* Basic styling for the dialog content */
+p {
+  margin-bottom: 8px;
+}
+
+/* Make the dialog responsive (optional) */
+@media (max-width: 600px) {
+
+  /* Adjust styles for smaller screens */
+  p {
+    font-size: 9em;
+  }
+}
+
+.mat-row .mat-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+
+.button-submitDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.examine-button {
+  margin: 20px;
+  padding: 20px;
+}
+
+.success-content {
+  margin: 20px;
+  max-height: none;
+}
+
+.full-width-table {
+  width: 100%;
+  table-layout: auto;
+}
+
+.example-container {
+  overflow-x: auto;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+  cursor: pointer;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: currentColor;
+  border-bottom: 3px solid;
+  border-top: 3px solid;
+}

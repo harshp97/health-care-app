@@ -1,0 +1,80 @@
+<section class="example-container example-container-refresh mat-elevation-z8" tabindex="0">
+  <div class="refresh-button-container">
+    <button mat-raised-button color="primary" class="refresh-button" (click)="refreshData()">
+      <mat-icon>refresh</mat-icon>Refresh
+    </button>
+  </div>
+</section>
+
+<section class="example-container mat-elevation-z8" tabindex="0">
+  <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+  <table mat-table [dataSource]="tableData">
+    <!-- ID Column -->
+    <ng-container matColumnDef="_id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let row">
+        <i>{{ row._id }}</i>
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="mobileNumber">
+      <th mat-header-cell *matHeaderCellDef>Mobile Num</th>
+      <td mat-cell *matCellDef="let row">{{ row.mobileNumber }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let row">{{ row.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef>Address</th>
+      <td mat-cell *matCellDef="let row">{{ row.address }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef>Gender</th>
+      <td mat-cell *matCellDef="let row">{{ row.gender }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dob">
+      <th mat-header-cell *matHeaderCellDef>DOB</th>
+      <td mat-cell *matCellDef="let row">{{ row.dob | agePipe }}</td>
+    </ng-container>
+
+    <!-- this is working -->
+    <!-- <ng-container matColumnDef="visitstatus">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let row" [ngClass]="{
+          visited: row.visitstatus === 'visited',
+          notvisited: row.visitstatus === 'notvisited'
+        }">
+        {{ row.visitstatus }}
+      </td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="visitstatus">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let row">
+        <span [ngClass]="{
+            visited: row.visitstatus === 'visited',
+            notvisited: row.visitstatus === 'notvisited'
+          }">
+          {{ row.visitstatus === 'visited' ? 'Examine' : 'Not Examined' }}
+        </span>
+      </td>
+    </ng-container>
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="clickedRows(row)"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+</section>

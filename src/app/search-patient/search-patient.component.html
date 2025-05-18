@@ -1,0 +1,90 @@
+<div class="registration-form-container mat-elevation-z8">
+  <form class="registration-form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Search Based on </mat-label>
+      <mat-select
+        formControlName="search"
+        (selectionChange)="onSearchCriteriaChange()"
+      >
+        <mat-option value="_id">
+          patient's Id(Enter 24 digit- alphnumeric, no uppercase)</mat-option
+        >
+        <mat-option value="name"> patient's name</mat-option>
+        <mat-option value="dob"> patient's dob</mat-option>
+        <mat-option value="mobileNumber"> patient's mob num</mat-option>
+        <mat-option value="email"> patient's email</mat-option>
+        <mat-option value="visitstatus"> patient's visitstatus</mat-option>
+      </mat-select>
+      <mat-error *ngIf="myForm.get('search')?.invalid">Required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" *ngIf="showField('_id')">
+      <mat-label>ID</mat-label>
+      <input matInput placeholder="Enter ID" formControlName="_id" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" *ngIf="showField('name')">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Enter Name" formControlName="name" />
+      <mat-error *ngIf="myForm.get('name')?.invalid"
+        >Enter Valid name | >3</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" *ngIf="showField('dob')">
+      <mat-label>Date of Birth (mm/dd/yyyy)</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="dob"
+        [max]="maxDate"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="myForm.get('dob')?.invalid">Enter Valid Date</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" *ngIf="showField('mobileNumber')">
+      <mat-label>Mobile Number</mat-label>
+      <input matInput type="tel" formControlName="mobileNumber" />
+      <mat-error *ngIf="myForm.get('mobileNumber')?.invalid"
+        >Enter Valid Mob Num</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" *ngIf="showField('email')">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" />
+      <mat-error *ngIf="myForm.get('email')?.invalid"
+        >Enter Valid Email</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" *ngIf="showField('visitstatus')">
+      <mat-label>Visit status</mat-label>
+      <mat-select formControlName="visitstatus">
+        <mat-option value="visited">visited</mat-option>
+        <mat-option value="notvisited">notvisited</mat-option>
+      </mat-select>
+      <mat-error *ngIf="myForm.get('visitstatus')?.invalid"
+        >not valid</mat-error
+      >
+    </mat-form-field>
+
+    <div class="button-submitDiv" *ngIf="myForm.get('search')?.value">
+      <button
+        mat-raised-button
+        type="submit"
+        class="button-submit"
+        [disabled]="myForm.invalid"
+      >
+        Search
+      </button>
+    </div>
+  </form>
+</div>
+
+<br />
+<div>
+  <app-data-table [searchTableData]="tableData"></app-data-table>
+</div>

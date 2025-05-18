@@ -1,0 +1,35 @@
+<h2 mat-dialog-title class="dialog-title">
+    Patient's Examine/Clinic Visit Data - {{ data.createdAt | timeAgo }}.
+</h2>
+
+<div mat-dialog-content class="dialog-content">
+
+    <div class="entry">
+        <label class="label">Prescription:</label>
+        <pre class="value">{{ data.prescription || '#NA' }}</pre>
+    </div>
+
+    <div class="entry">
+        <label class="label">Note:</label>
+        <pre class="value">{{ data.note || '#NA' }}</pre>
+    </div>
+
+    <div class="entry">
+        <label class="label">CC:</label>
+        <pre class="value">{{ data.CC || '#NA' }}</pre>
+    </div>
+
+    <div class="entry">
+        <label class="label">Conclusion:</label>
+        <pre class="value">{{ data.conclusion || '#NA' }}</pre>
+    </div>
+
+</div>
+
+
+<div mat-dialog-actions class="dialog-actions">
+    <button mat-stroked-button color="primary" (click)="onNoClick()">
+        <mat-icon>close</mat-icon>
+        Close
+    </button>
+</div>

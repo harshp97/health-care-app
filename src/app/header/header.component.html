@@ -1,0 +1,38 @@
+<mat-toolbar class="header">
+  <span>Om Mandali Health Care</span>
+  <span class="spacer"></span>
+
+  <!-- Theme Toggle (for larger screens) -->
+  <div class="screen-too-small">
+    <mat-slide-toggle (change)="toggleTheme()" [checked]="isDarkMode">
+      {{ isDarkMode ? 'Dark Mode' : 'Light Mode' }}
+    </mat-slide-toggle>
+  </div>
+
+  <!-- Hamburger menu button -->
+  <button mat-icon-button class="hamburger-button" (click)="toggleMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <!-- Dropdown menu items -->
+  <div class="menu-items" [class.show-menu]="isMenuOpen">
+    <div class="menu-list-hov" *ngIf="showModeBinO">
+      <button mat-flat-button class="logOut-button" (click)="toggleTheme()">
+        <mat-icon>{{ isDarkMode ? 'brightness_2' : 'wb_sunny' }}</mat-icon>
+        {{ isDarkMode ? 'Dark Mode' : 'Light Mode' }}
+      </button>
+    </div>
+
+    <div class="menu-list-hov" (click)="openAccountDialog()">
+      <button mat-flat-button class="logOut-button">
+        <mat-icon>account_circle</mat-icon> Account
+      </button>
+    </div>
+
+    <div class="menu-list-hov" (click)="logoutUser()">
+      <button mat-flat-button class="logOut-button">
+        <mat-icon>exit_to_app</mat-icon> Log Out
+      </button>
+    </div>
+  </div>
+</mat-toolbar>

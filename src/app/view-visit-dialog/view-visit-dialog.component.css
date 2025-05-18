@@ -1,0 +1,62 @@
+.dialog-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #1e1e1e;
+    margin-bottom: 16px;
+}
+
+.dialog-content {
+    font-size: 16px;
+    color: #333;
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.entry {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+
+.entry label {
+    font-weight: 600;
+    color: #555;
+    min-width: 140px;
+    margin-right: 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.value {
+    white-space: pre-wrap;
+    /* preserves newlines */
+    word-break: break-word;
+    flex: 1;
+    margin: 0;
+    font-family: inherit;
+    display: inline-block;
+}
+
+.dialog-actions {
+    margin-top: 24px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+mat-icon {
+    margin-right: 4px;
+}
+
+
+/* Responsive width */
+@media (max-width: 600px) {
+    .mat-dialog-container {
+        width: 90vw !important;
+        max-width: none !important;
+        margin: 0 auto;
+    }
+}
+

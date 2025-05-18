@@ -1,0 +1,28 @@
+.registration-form-container {
+    padding: 20px;
+    margin: 12px;
+    background-color: var(--bg-color);
+    /* Use CSS Variable */
+    /* border-radius: 8px; */
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.19); */
+    /* transition: background-color 0.3s; */
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+
+.button-submitDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

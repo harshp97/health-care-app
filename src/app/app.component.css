@@ -1,0 +1,480 @@
+/* Light Theme (Default) */
+:root {
+    --bg-color: #f9f9f9;
+    --text-color: #222;
+    --primary-color: #3f51b5;
+    /* Example Material primary */
+    --accent-color: #e91e63;
+    /* Example Material accent */
+    --hf-color: #282828;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    /*transition: background-color 0.3s, color 0.3s;
+     Smooth transition */
+
+
+    --mdc-outlined-text-field-focus-outline-color: black;
+    --mdc-outlined-text-field-focus-label-text-color: black;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+
+.main-content {
+    flex: 1;
+    padding: 2px 15%;
+}
+
+/* Media query for mobile devices (example: max-width: 768px) */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 5px 0%;
+        /* Reduce left/right padding to 5% or remove it (padding: 10px 0) */
+    }
+}
+
+body .header {
+    padding: 2px 15%;
+}
+
+/* Media query for mobile devices (example: max-width: 768px) */
+@media (max-width: 768px) {
+    body .header {
+        padding: 10px 5%;
+        /* Reduce left/right padding to 5% or remove it (padding: 10px 0) */
+    }
+}
+
+/* Material Theme Overrides (Light) - adjust these based on the colors you want */
+
+
+.mat-raised-button.mat-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+    /* mat tab active tab*/
+    color: #000000 !important;
+}
+
+.mat-mdc-tab-group.mat-primary .mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline,
+.mat-mdc-tab-group.mat-primary .mat-mdc-tab-link:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline,
+.mat-mdc-tab-nav-bar.mat-primary .mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline,
+.mat-mdc-tab-nav-bar.mat-primary .mat-mdc-tab-link:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline {
+    border-color: #111;
+    /*underline of active tab in tabs*/
+}
+
+.mat-mdc-tab-group.mat-primary .mdc-tab__ripple::before,
+.mat-mdc-tab-group.mat-primary .mat-mdc-tab .mat-ripple-element,
+.mat-mdc-tab-nav-bar.mat-primary .mat-mdc-tab-header-pagination .mat-ripple-element,
+.mat-mdc-tab-nav-bar.mat-primary .mat-mdc-tab-link .mat-ripple-element {
+    background-color: #111;
+    /*ripple in tabs*/
+}
+
+
+/* select/ dropdown selected value name color */
+.mat-mdc-select{
+    color: #000000;
+}
+
+/* Dark Theme */
+body.dark-theme {
+    --bg-color: var(--hf-color);
+    --text-color: #f0f0f0;
+
+
+
+    /*for input field*/
+    --mdc-outlined-text-field-label-text-color: white;
+    --mat-sys-primary: white;
+    --mdc-outlined-text-field-outline-color: white;
+    --mdc-outlined-text-field-input-text-color: white;
+    --mdc-outlined-text-field-caret-color: white;
+    --mdc-outlined-text-field-input-text-placeholder-color: rgb(101, 96, 96);
+
+    --mdc-outlined-text-field-label-text-color: rgb(255, 255, 255);
+
+    --mdc-outlined-text-field-hover-outline-color: rgb(150, 150, 150);
+    --mdc-outlined-text-field-hover-label-text-color: rgb(150, 150, 150);
+
+
+    --mdc-outlined-text-field-focus-outline-color: white;
+    --mdc-outlined-text-field-focus-label-text-color: white;
+
+
+    /*disable input field */
+
+    --mdc-outlined-text-field-disabled-outline-color: rgb(100, 99, 99);
+    --mdc-outlined-text-field-disabled-label-text-color: rgb(100, 99, 99);
+    --mdc-outlined-text-field-disabled-input-text-color: rgb(100, 99, 99);
+    --mdc-outlined-text-field-disabled-input-placeholder-color: rgb(100, 99, 99);
+
+
+
+    /*mat table*/
+    --mat-table-background-color: #282828;
+    --mat-table-header-headline-color: #fff;
+    --mat-table-row-item-label-text-color: #cccccc;
+    --mat-table-row-item-outline-color: rgba(118, 118, 118, 0.662);
+
+    /*mat table check box*/
+    --mdc-checkbox-unselected-icon-color: rgba(118, 118, 118, 0.662);
+    --mdc-checkbox-unselected-hover-icon-color: rgba(118, 118, 118, 0.9);
+
+    /* for table pagination */
+    --mat-paginator-container-text-color: rgb(255 255 255 / 87%);
+    --mat-paginator-container-background-color: #282828;
+    --mat-paginator-enabled-icon-color: rgb(169 169 169);
+    --mat-paginator-disabled-icon-color: rgb(207 207 207 / 25%);
+
+
+    
+    /*for dialog box*/
+    --mdc-dialog-container-color: var(--hf-color);
+    --mdc-dialog-subhead-color: #ccc;
+    --mdc-dialog-supporting-text-color: #ccc;
+
+    /*button(dialog-box)*/
+    --mdc-text-button-label-text-color: #ccc;
+
+
+    --mat-select-enabled-arrow-color: #a9a9a9;
+
+
+
+
+    --mdc-list-list-item-label-text-color : #ccc;
+    
+
+}
+
+/* Material Theme Overrides (Dark) */
+body.dark-theme .mat-toolbar .mat-label {
+    background-color: #1a1c1e;
+    /* Darker toolbar */
+    color: #ffffff;
+}
+
+body.dark-theme .mat-raised-button.mat-primary {
+    background-color: var(--accent-color);
+    /* Use accent color in dark mode? */
+    color: #ffffff;
+}
+
+/* Angular Material overrides */
+body.dark-theme .mat-form-field .mat-form-field-label {
+    color: rgba(255, 255, 255, 0.6);
+    /* Lighten the label color */
+}
+
+body.dark-theme .mat-form-field .mat-input-element {
+    color: #ffffff;
+    /* Make the input text white */
+}
+
+body.dark-theme .mat-form-field .mat-form-field-ripple {
+    background-color: #0f0f0f;
+    /* White ripple effect */
+}
+
+
+/* footer Dark Mode*/
+
+body.dark-theme .footer {
+    background-color: var(--hf-color);
+    /* Darker toolbar */
+    color: #f0f0f0;
+    box-shadow: 0 0 10px rgba(252, 250, 250, 0.1);
+}
+
+body.dark-theme .header {
+    background-color: var(--hf-color);
+    color: #f0f0f0;
+    box-shadow: 0px 1.2px 0px 0px rgba(252, 250, 250, 0.19);
+    --mat-switch-label-text-color: rgb(255 255 255 / 87%);
+}
+
+body.dark-theme .registration-form-container {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.19);
+}
+
+
+body.dark-theme .mat-internal-form-field {
+    --mat-switch-label-text-color: #ffffff;
+}
+
+body.dark-theme .mat-mdc-icon-button.mat-mdc-button-base {
+    color: #ffffff;
+}
+
+
+
+/*header logout button dark mode*/
+body.dark-theme .logOut-button {
+    color: #ffffff;
+    background-color: var(--hf-color);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/**menu item*/
+body.dark-theme .menu-items {
+    background-color: var(--hf-color);
+}
+
+
+body.dark-theme .logOut-button:hover {
+    background-color: rgb(94, 94, 94);
+    /* Slightly darker on hover */
+}
+
+body.dark-theme .menu-items:hover {
+    background-color: var(--hf-color);
+}
+
+body.dark-theme .menu-list-hov:hover {
+    background-color: rgb(94, 94, 94);
+}
+
+
+
+
+
+/*MAt Tabs*/
+
+body.dark-theme .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+    /* active tab*/
+    color: #ffffff !important;
+}
+
+body.dark-theme .mat-mdc-tab .mdc-tab__text-label {
+    /* ainctive tab*/
+    color: rgba(208, 198, 198, 0.6);
+}
+
+body.dark-theme .mat-mdc-tab-header-pagination-chevron {
+    border-color: var(--mdc-theme-on-surface, #ffffff);
+    /*arrow symbol in tabs*/
+}
+
+
+body.dark-theme .mat-mdc-tab-group.mat-primary .mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline,
+.mat-mdc-tab-group.mat-primary .mat-mdc-tab-link:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline,
+.mat-mdc-tab-nav-bar.mat-primary .mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline,
+.mat-mdc-tab-nav-bar.mat-primary .mat-mdc-tab-link:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline {
+    border-color: #ffffff;
+    /*underline of active tab in tabs*/
+}
+
+
+body.dark-theme .mat-mdc-tab-group.mat-primary .mdc-tab__ripple::before,
+.mat-mdc-tab-group.mat-primary .mat-mdc-tab .mat-ripple-element,
+.mat-mdc-tab-nav-bar.mat-primary .mat-mdc-tab-header-pagination .mat-ripple-element,
+.mat-mdc-tab-nav-bar.mat-primary .mat-mdc-tab-link .mat-ripple-element {
+    background-color: #ffffff;
+    /*ripple in tabs*/
+}
+
+
+
+
+
+/*submit button*/
+body.dark-theme .button-submit {
+    background-color: #87a9ff;
+    color: #000000;
+}
+
+body.dark-theme .button-submit:disabled {
+    background-color: rgb(98, 97, 97);
+    color: #000000;
+}
+
+body.dark-theme .button-submit:hover {
+    background-color: #a5bffe;
+}
+
+
+
+/*table*/
+
+
+
+/* select/ dropdown selected value name color */
+body.dark-theme .mat-mdc-select{
+    color: #fff;
+}
+
+/* Light Theme (Default) */
+:root {
+    --bg-color: #f9f9f9;
+    --text-color: #222;
+    --primary-color: #3f51b5; /* Example Material primary */
+    --accent-color: #e91e63; /* Example Material accent */
+    --hf-color: #282828;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    --mdc-outlined-text-field-focus-outline-color: black;
+    --mdc-outlined-text-field-focus-label-text-color: black;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+    padding: 2px 15%;
+}
+
+/* Media query for mobile devices (example: max-width: 768px) */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 5px 0%;
+    }
+}
+
+body .header {
+    padding: 2px 15%;
+}
+
+/* Media query for mobile devices (example: max-width: 768px) */
+@media (max-width: 768px) {
+    body .header {
+        padding: 10px 5%;
+    }
+}
+
+/* Material Theme Overrides (Light) - adjust these based on the colors you want */
+.mat-raised-button.mat-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+    color: #000000 !important;
+}
+
+.mat-mdc-tab-group.mat-primary .mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline,
+.mat-mdc-tab-group.mat-primary .mat-mdc-tab-link:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline,
+.mat-mdc-tab-nav-bar.mat-primary .mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline,
+.mat-mdc-tab-nav-bar.mat-primary .mat-mdc-tab-link:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline {
+    border-color: #111; /*underline of active tab in tabs*/
+}
+
+.mat-mdc-tab-group.mat-primary .mdc-tab__ripple::before,
+.mat-mdc-tab-group.mat-primary .mat-mdc-tab .mat-ripple-element,
+.mat-mdc-tab-nav-bar.mat-primary .mat-mdc-tab-header-pagination .mat-ripple-element,
+.mat-mdc-tab-nav-bar.mat-primary .mat-mdc-tab-link .mat-ripple-element {
+    background-color: #111; /*ripple in tabs*/
+}
+
+/* select/ dropdown selected value name color */
+.mat-mdc-select {
+    color: #000000;
+}
+
+
+
+/* Better suffix alignment and spacing inside form fields */
+.mat-form-field {
+    width: 100%;
+  }
+  
+ 
+  /*this is for view-visit-dialog dark theme adjustments*/
+  body.dark-theme .dialog-content  {
+    color: #d4d1d1 !important;
+    /* Make the input text white */
+}
+
+body.dark-theme .dialog-title  {
+    color: #ffffff;
+    /* Make the input text white */
+}
+body.dark-theme .label{
+    color: #ffffff !important;
+}
+
+body.dark-theme .disabled-row {
+  background-color: #3f3f3f; /* light gray or any color */
+}
+
+
+
+
+/* this is for login only */
+ .login-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  /* Login card styling */
+  .login-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 32px;
+    background-color: var(--bg-color);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  
+  .login-header h2 {
+    margin: 0;
+    font-weight: 600;
+  }
+  
+  .login-header p {
+    color: #666;
+    margin-top: 8px;
+  }
+  
+  /* Form styling */
+  .login-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .full-width {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  /* Button styling */
+  .login-button {
+    width: 100%;
+    height: 45px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  /* Spinner spacing inside button */
+  mat-progress-spinner {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  

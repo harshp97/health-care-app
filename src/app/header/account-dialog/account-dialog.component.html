@@ -1,0 +1,31 @@
+<h2 mat-dialog-title class="dialog-title">
+  Account Details
+</h2>
+
+<div mat-dialog-content class="dialog-content">
+  <mat-list>
+    <mat-list-item>
+      <strong>User Name:</strong>
+      <span class="value">{{ data.username }}</span>
+    </mat-list-item>
+    <mat-list-item>
+      <strong>Name:</strong>
+      <span class="value">{{ data.nameofuser }}</span>
+    </mat-list-item>
+    <mat-list-item>
+      <strong>Email:</strong>
+      <span class="value">{{ data.email }}</span>
+    </mat-list-item>
+    <mat-list-item>
+      <strong>Profession:</strong>
+      <span class="value">{{ data.profession }}</span>
+    </mat-list-item>
+  </mat-list>
+</div>
+
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-stroked-button color="primary" (click)="onNoClick()">
+    <mat-icon>close</mat-icon>
+    Close
+  </button>
+</div>

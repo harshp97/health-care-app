@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+/* 1) import Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* 2) override every element (including Material components) */
+*,
+*::before,
+*::after {
+  font-family: 'Poppins', sans-serif !important;
+}
+.mat-icon {
+  font-family: 'Material Icons' !important;
+}
+
+
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Example media query (adjust breakpoints as needed) */
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+  }
+
+  .form-row>* {
+    flex-basis: 100%;
+    min-width: auto;
+  }
+}
+
+

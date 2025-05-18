@@ -1,0 +1,249 @@
+<div class="registration-form-container mat-elevation-z8">
+    <form class="registration-form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+            <mat-label>Search Based on </mat-label>
+            <mat-select formControlName="search" (selectionChange)="onSearchCriteriaChange()">
+                <mat-option value="_id">
+                    patient's Id(Enter 24 digit- alphnumeric, no uppercase)</mat-option>
+                <mat-option value="name"> patient's name</mat-option>
+                <mat-option value="dob"> patient's dob</mat-option>
+                <mat-option value="mobileNumber"> patient's mob num</mat-option>
+                <mat-option value="email"> patient's email</mat-option>
+                <mat-option value="visitstatus"> patient's visitstatus</mat-option>
+            </mat-select>
+            <mat-error *ngIf="myForm.get('search')?.invalid">Required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" *ngIf="showField('_id')">
+            <mat-label>ID</mat-label>
+            <input matInput placeholder="Enter ID" formControlName="_id" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" *ngIf="showField('name')">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Enter Name" formControlName="name" />
+            <mat-error *ngIf="myForm.get('name')?.invalid">Enter Valid name | >3</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" *ngIf="showField('dob')">
+            <mat-label>Date of Birth (mm/dd/yyyy)</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dob" [max]="maxDate" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="myForm.get('dob')?.invalid">Enter Valid Date</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" *ngIf="showField('mobileNumber')">
+            <mat-label>Mobile Number</mat-label>
+            <input matInput type="tel" formControlName="mobileNumber" />
+            <mat-error *ngIf="myForm.get('mobileNumber')?.invalid">Enter Valid Mob Num</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" *ngIf="showField('email')">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" />
+            <mat-error *ngIf="myForm.get('email')?.invalid">Enter Valid Email</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" *ngIf="showField('visitstatus')">
+            <mat-label>Visit status</mat-label>
+            <mat-select formControlName="visitstatus">
+                <mat-option value="visited">visited</mat-option>
+                <mat-option value="notvisited">notvisited</mat-option>
+            </mat-select>
+            <mat-error *ngIf="myForm.get('visitstatus')?.invalid">not valid</mat-error>
+        </mat-form-field>
+
+        <div class="button-submitDiv" *ngIf="myForm.get('search')?.value">
+            <button mat-raised-button type="submit" class="button-submit" [disabled]="myForm.invalid">
+                Search
+            </button>
+        </div>
+    </form>
+</div>
+
+<section class="example-container example-container-refresh mat-elevation-z8" tabindex="0">
+    <div class="refresh-button-container ">
+        <button mat-raised-button color="primary" class="refresh-button " (click)="refreshData()">
+            <mat-icon>refresh</mat-icon>Refresh
+        </button>
+    </div>
+</section>
+
+<section class="example-container mat-elevation-z8" tabindex="0">
+    <mat-progress-bar *ngIf="isTableLoading" mode="indeterminate"></mat-progress-bar>
+
+    <table mat-table [dataSource]="patientFormData">
+        <!-- ID Column -->
+        <ng-container matColumnDef="_id">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let row">
+                <i>{{ row._id }}</i>
+            </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="mobileNumber">
+            <th mat-header-cell *matHeaderCellDef>Mobile Num</th>
+            <td mat-cell *matCellDef="let row">{{ row.mobileNumber }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let row">{{ row.email }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef>Address</th>
+            <td mat-cell *matCellDef="let row">{{ row.address }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="gender">
+            <th mat-header-cell *matHeaderCellDef>Gender</th>
+            <td mat-cell *matCellDef="let row">{{ row.gender }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="dob">
+            <th mat-header-cell *matHeaderCellDef>DOB</th>
+            <td mat-cell *matCellDef="let row">{{ row.dob | agePipe }}</td>
+        </ng-container>
+
+
+        <!-- <ng-container matColumnDef="visitstatus">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let row" [ngClass]="{
+            visited: row.visitstatus === 'visited',
+            notvisited: row.visitstatus === 'notvisited'
+          }">
+                {{ row.visitstatus }}
+            </td>
+        </ng-container> -->
+
+        <ng-container matColumnDef="visitstatus">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let row">
+                <span [ngClass]="{
+                  visited: row.visitstatus === 'visited',
+                  notvisited: row.visitstatus === 'notvisited'
+                }">
+                    {{ row.visitstatus }}
+                </span>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="clickedRows(row)"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+</section>
+
+
+
+
+<section class="example-container mat-elevation-z8" tabindex="0" *ngIf="!isFormHidden">
+    <div>
+        <h2>
+            Change Patient: <i>{{patient_id}}</i> | {{patientName}}'s' personal details.
+        </h2>
+    </div>
+
+    <div class="registration-form-container">
+        <form class="registration-form" [formGroup]="patientEditForm">
+
+            <div class="form-row row">
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Enter Name" formControlName="name" required>
+                    <mat-error *ngIf="patientEditForm.get('name')?.invalid">{{getErrorMessage('name')}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Date of Birth</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="dob" [max]="maxDate" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="patientEditForm.get('dob')?.invalid">{{getErrorMessage('dob')}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Gender</mat-label>
+                    <mat-select formControlName="gender" required>
+                        <mat-option value="Male">Male</mat-option>
+                        <mat-option value="Female">Female</mat-option>
+                        <mat-option value="other">Other</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="patientEditForm.get('gender')?.invalid">Required</mat-error>
+                </mat-form-field>
+
+            </div>
+
+            <div class="form-row">
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Care of</mat-label>
+                    <input matInput placeholder="Enter Care Of" formControlName="careOf">
+                    <mat-error *ngIf="patientEditForm.get('careOf')?.invalid">{{getErrorMessage('careOf')}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Mobile Number</mat-label>
+                    <input matInput type="tel" formControlName="mobileNumber" required>
+                    <mat-error
+                        *ngIf="patientEditForm.get('mobileNumber')?.invalid">{{getErrorMessage('mobileNumber')}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" formControlName="email">
+                    <mat-error *ngIf="patientEditForm.get('email')?.invalid">{{getErrorMessage('email')}}</mat-error>
+                </mat-form-field>
+            </div>
+
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Address</mat-label>
+                <textarea matInput rows="4" formControlName="address"></textarea>
+            </mat-form-field>
+
+
+            <mat-form-field class="full-width" appearance="outline" *ngIf="!isHidden">
+                <mat-label>Past History</mat-label>
+                <textarea matInput placeholder="Enter Past History" rows="4" formControlName="pastHistory"></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline" *ngIf="!isHidden">
+                <mat-label>Family History</mat-label>
+                <textarea matInput placeholder="Enter Family History" rows="4"
+                    formControlName="familyHistory"></textarea>
+            </mat-form-field>
+
+
+            <div class="button-submitDiv">
+
+                <button mat-raised-button color="primary" type="submit" class="button-submit"
+                    [disabled]="patientEditForm.invalid" (click)="submitNewPatientData()">
+
+                    <mat-progress-spinner *ngIf="isPEditFormLoading" diameter="16" mode="indeterminate" color="accent"
+                        strokeWidth="10" style="display: inline-block; vertical-align: middle;">
+                    </mat-progress-spinner>
+
+                    <span *ngIf="!isPEditFormLoading">
+                        Submit
+                    </span>
+
+                </button>
+
+            </div>
+
+        </form>
+        <mat-progress-bar *ngIf="isPEditFormLoading" mode="indeterminate"></mat-progress-bar>
+    </div>
+
+
+
+</section>
