@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class VisitsService {
 
-  baseUrl = 'http://localhost:8000/api/v1/visits';
+  //baseUrl = 'http://localhost:8000/api/v1/visits';
+  baseUrl = 'https://backend103-1.onrender.com/api/v1/visits';
   constructor(private http: HttpClient) { }
 
 
