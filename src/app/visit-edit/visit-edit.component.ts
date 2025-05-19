@@ -463,16 +463,18 @@ export class VisitEditComponent {
     // --- Header Styling and Content ---
     doc.setFillColor(primaryColor);
     doc.rect(0, 0, 210, 20, 'F');
+    const doctorNameLeftMargin = 8; // Reduced from 20 to 10
+
     doc.setFontSize(16);
     doc.setFont(boldFont, 'bold');
     doc.setTextColor('#FFFFFF');
-    doc.text(`Dr. ${doctorName}`, 20, 14);
+    doc.text(`Dr. ${doctorName}`, doctorNameLeftMargin, 11);
 
-
+    // Dynamically position degree
     doc.setFontSize(11);
     doc.setFont(boldFont, 'bold');
     doc.setTextColor('#FFFFFF');
-    doc.text(degree, 92, 14);
+    doc.text(degree, doctorNameLeftMargin, 18);
 
 
 
@@ -485,13 +487,13 @@ export class VisitEditComponent {
     //Date Rendering
     const today = new Date();
     const formattedDate = today.toLocaleDateString();
-    const dateX = 150; // Adjust as needed to position the date (was 150)
+    const dateX = 160; // Adjust as needed to position the date (was 150)
     doc.text(doctorPhone, 20, 36);
 
     doc.setFontSize(10);
     doc.setFont(normalFont, 'normal');
     doc.setTextColor('#000000');
-    doc.text(formattedDate, dateX, 36);
+    doc.text(`Date- ${formattedDate}`, dateX, 36);
 
     doc.setLineWidth(0.5);
     doc.setDrawColor(primaryColor);
@@ -533,13 +535,13 @@ export class VisitEditComponent {
     const nameY = y + lineHeight
     doc.setFont(normalFont, 'normal');
     doc.setTextColor(blackColor);
-    const name = this.myForm.get('name')?.value; //OCR Value
+    const name = this.row.name; //OCR Value
     doc.text(`${name}`, leftMargin, nameY); // Value BELOW label
 
 
     //Age
     const ageX = 80;  //Position age
-    const ageStr: any = this.calculateAge(this.myForm.get('dob')?.value); //Get age from Date Of Birth
+    const ageStr: any = this.calculateAge(this.row.dob); //Get age from Date Of Birth
     doc.setFontSize(10);
     doc.setFont(boldFont, 'bold');
     doc.setTextColor(primaryColor);
@@ -559,7 +561,7 @@ export class VisitEditComponent {
     doc.text("Number:", numberX, y); // Label ABOVE the value
     doc.setFont(normalFont, 'normal');
     doc.setTextColor(blackColor);
-    const numberStr = this.myForm.get('mobileNumber')?.value || 'na'; //OCR
+    const numberStr = this.row.mobileNumber || '#'; //OCR
     doc.text(numberStr, numberX, y + lineHeight);
 
     //Gender
@@ -570,7 +572,7 @@ export class VisitEditComponent {
     doc.text("Gender:", genderX, y); // Label ABOVE the value
     doc.setFont(normalFont, 'normal');
     doc.setTextColor(blackColor);
-    const gender = this.myForm.get('gender')?.value || 'N/A';
+    const gender = this.row.gender || 'N/A';
     doc.text(gender, genderX, y + lineHeight);
 
     y += lineHeight * 3//To force the rendering code
@@ -592,7 +594,7 @@ export class VisitEditComponent {
     doc.text("Weight :", leftMargin, weightY); // Label ABOVE the value
     doc.setFont(normalFont, 'normal');
     doc.setTextColor(blackColor);
-    doc.text((this.myForm.get('weight')?.value || "na") + " Kg", leftMargin, weightY + lineHeight)  //Set value
+    doc.text((this.myForm.get('weight')?.value || "#") + " kg", leftMargin, weightY + lineHeight)  //Set value
     //Set  code for Height and Blood code to show in more short line, use numbers
     const heightX = 70
     doc.setFontSize(10);
@@ -601,16 +603,16 @@ export class VisitEditComponent {
     doc.text("Height :", heightX, weightY); // Lable
     doc.setFont(normalFont, 'normal');
     doc.setTextColor(blackColor);
-    doc.text((this.myForm.get('height')?.value || "na") + "cm", heightX, weightY + lineHeight) //Set value
+    doc.text((this.myForm.get('height')?.value || "#") + " cm", heightX, weightY + lineHeight) //Set value
 
     const B_SugarX = 110 //Where blood pressure will be rendered, use magic number.
     doc.setFontSize(10);
     doc.setFont(boldFont, 'bold');
     doc.setTextColor(primaryColor);
-    doc.text("B-Sugar :", B_SugarX, weightY); // Lable
+    doc.text("Sugar :", B_SugarX, weightY); // Lable
     doc.setFont(normalFont, 'normal');
     doc.setTextColor(blackColor);
-    doc.text((this.myForm.get('bloodSugar')?.value || "na") + "mg/dL", B_SugarX, weightY + lineHeight) //Set value
+    doc.text((this.myForm.get('bloodSugar')?.value || "#") + " mg/dL", B_SugarX, weightY + lineHeight) //Set value
 
 
     //Set Pressure, the more item here, you will start seeing the difference.
@@ -621,7 +623,7 @@ export class VisitEditComponent {
     doc.text("Pressure:", pressureX, weightY); // Lable
     doc.setFont(normalFont, 'normal');
     doc.setTextColor(blackColor);
-    doc.text((this.myForm.get('bloodPressure')?.value || "12") + "mmHg", pressureX, weightY + lineHeight) //Set value
+    doc.text((this.myForm.get('bloodPressure')?.value || "#") + " mmHg", pressureX, weightY + lineHeight) //Set value
 
     y += lineHeight * 3
 
@@ -669,7 +671,7 @@ export class VisitEditComponent {
     doc.setFont('helvetica', 'italic');
     doc.text(footerText, 20, doc.internal.pageSize.height - 20); // Bottom of the page
 
-    const namep = this.myForm.get('name')?.value
+    const namep = this.row.name;
     doc.save(`${namep}-PRESCRIPTION.pdf`);
   }
 
