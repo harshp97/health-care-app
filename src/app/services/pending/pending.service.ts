@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class PendingService {
   // baseUrl = 'http://localhost:8000/api/v1/pendings';
-  baseUrl = 'https://backend103-1.onrender.com/api/v1/pendings';
+  baseUrl = 'https://backend103.onrender.com/api/v1/pendings';
   constructor(private http: HttpClient) { }
 
 

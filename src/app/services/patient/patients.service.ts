@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class PatientsService {
 
   //baseUrl = 'http://localhost:8000/api/v1/patients';
-  baseUrl = 'https://backend103-1.onrender.com/api/v1/patients';
+  baseUrl = 'https://backend103.onrender.com/api/v1/patients';
   constructor(private http: HttpClient) { }
 
 
