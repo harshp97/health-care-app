@@ -22,7 +22,7 @@
   }
   
   .form-row > * {
-    flex: 1 1 300px;
+    flex: auto;
   }
   
   .full-width {
