@@ -23,7 +23,7 @@ body {
 
 /* for background dots */
 body {
-    background-image: radial-gradient(rgba(0, 0, 0, 0.512) 1px, transparent 0);
+    background-image: radial-gradient(rgba(1, 0, 35, 0.05) 1px, transparent 0);
     background-size: 20px 20px;
     /* spacing between dots */
     color: var(--text-color);
