@@ -1,15 +1,15 @@
 <div class="registration-form-container mat-elevation-z8">
     <form class="registration-form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
         <mat-form-field appearance="outline">
-            <mat-label>Search Based on </mat-label>
+            <mat-label>Search Based on Patient's </mat-label>
             <mat-select formControlName="search" (selectionChange)="onSearchCriteriaChange()">
                 <mat-option value="_id">
-                    patient's Id(Enter 24 digit- alphnumeric, no uppercase)</mat-option>
-                <mat-option value="name"> patient's name</mat-option>
-                <mat-option value="dob"> patient's dob</mat-option>
-                <mat-option value="mobileNumber"> patient's mob num</mat-option>
-                <mat-option value="email"> patient's email</mat-option>
-                <mat-option value="visitstatus"> patient's visitstatus</mat-option>
+                    Unique ID (Enter 24 digit- alphnumeric, no uppercase)</mat-option>
+                <mat-option value="name">Name</mat-option>
+                <mat-option value="dob"> DOB</mat-option>
+                <mat-option value="mobileNumber"> Mobile Number</mat-option>
+                <mat-option value="email"> Email</mat-option>
+                <mat-option value="visitstatus"> Examine/Checkup Status</mat-option>
             </mat-select>
             <mat-error *ngIf="myForm.get('search')?.invalid">Required</mat-error>
         </mat-form-field>
@@ -48,8 +48,8 @@
         <mat-form-field appearance="outline" *ngIf="showField('visitstatus')">
             <mat-label>Visit status</mat-label>
             <mat-select formControlName="visitstatus">
-                <mat-option value="visited">visited</mat-option>
-                <mat-option value="notvisited">notvisited</mat-option>
+                <mat-option value="visited">Examined/Checkuped</mat-option>
+                <mat-option value="notvisited">Not Examined/Not Checkuped</mat-option>
             </mat-select>
             <mat-error *ngIf="myForm.get('visitstatus')?.invalid">not valid</mat-error>
         </mat-form-field>

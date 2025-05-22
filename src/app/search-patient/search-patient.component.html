@@ -48,8 +48,8 @@
     <mat-form-field appearance="outline" *ngIf="showField('visitstatus')">
       <mat-label>Visit status</mat-label>
       <mat-select formControlName="visitstatus">
-        <mat-option value="visited">visited</mat-option>
-        <mat-option value="notvisited">notvisited</mat-option>
+        <mat-option value="visited">Examined/Checkuped</mat-option>
+        <mat-option value="notvisited">Not Examined/Not Checkuped</mat-option>
       </mat-select>
       <mat-error *ngIf="myForm.get('visitstatus')?.invalid">not valid</mat-error>
     </mat-form-field>
