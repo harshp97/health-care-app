@@ -75,7 +75,7 @@ export class HeaderComponent implements OnInit {
   openAccountDialog(): void {
 
     const dialogRef = this.dialog.open(AccountDialogComponent, {
-      width: '400px', // Adjust width as needed
+      width: 'auto', // Adjust width as needed
       data: this.useraccountDialog // Pass user data to the dialog
     });
 
